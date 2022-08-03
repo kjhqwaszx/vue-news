@@ -1,16 +1,20 @@
 <template>
   <div id="ap">
-    hello
+    <tool-bar></tool-bar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
+import ToolBar from './components/ToolBar.vue'
 export default {
+
+  components:{
+    ToolBar
+  },
   methods:{
     fetchData(){
       console.log('hellod');
-      
     }
   }  
 }
@@ -24,5 +28,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+body{
+  padding: 0;
+  margin: 0;
 }
 </style>
