@@ -13,6 +13,9 @@ const store = createStore({
     getters:{
         fetchedAsk(state){
             return state.ask;
+        },
+        fetchedNews(state){
+            return state.news
         }
     },
     mutations,
