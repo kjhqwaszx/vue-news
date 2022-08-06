@@ -24,11 +24,11 @@ const routes = [
         path: '/jobs',
         component: JobsView
     },{
-        path:'/user',
-        component: UserView
-    },{
-        path:'/item',
+        path:'/item/:id',
         component:ItemView
+    },{
+        path:'/user/:id',
+        component: UserView
     }
     
 ]

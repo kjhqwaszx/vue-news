@@ -7,7 +7,9 @@ const store = createStore({
         return{
             news:[],
             jobs:[],
-            ask:[]
+            ask:[],
+            user:{},
+            item:[]
         }
     },
     getters:{
@@ -16,6 +18,12 @@ const store = createStore({
         },
         fetchedNews(state){
             return state.news
+        },
+        fetchedUserInfo(state){
+            return state.user
+        },
+        fetchedItemInfo(state){
+            return state.item
         }
     },
     mutations,

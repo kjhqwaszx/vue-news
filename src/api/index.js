@@ -24,8 +24,22 @@ function fetchJobsList(){
     return axios.get(`${config.baseUrl}jobs/1.json`);
 }
 
+function fetchUserInfo(userName){
+    // return axios.get(config.baseUrl + 'user/username.json');
+    // ES6
+    return axios.get(`${config.baseUrl}user/${userName}.json`);
+}
+
+function fetchItemInfo(askId){
+    // return axios.get(config.baseUrl + 'user/username.json');
+    // ES6
+    return axios.get(`${config.baseUrl}item/${askId}.json`);
+}
+
 export{
     fetchNewsList,
     fetchAskList,
-    fetchJobsList
+    fetchJobsList,
+    fetchUserInfo,
+    fetchItemInfo
 }

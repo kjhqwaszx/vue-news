@@ -2,7 +2,7 @@
   <div>    
     <!-- this.$store.state.asks 로 접근 가능하지만 Getters 이용 -->
     <p v-for ="item in fetchedAsk" :key="item.title">
-        <a :href="item.url"> {{item.title}}</a>
+        <router-link :to="`/item/${item.id}`">{{item.title}}</router-link>
         <small> {{item.time_ago}}, {{item.user}}</small>
     </p>
   </div>
