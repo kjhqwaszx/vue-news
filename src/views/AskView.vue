@@ -1,25 +1,16 @@
 <template>
-  <div>    
-    <!-- this.$store.state.asks 로 접근 가능하지만 Getters 이용 -->
-    <p v-for ="item in fetchedAsk" :key="item.title">
-        <router-link :to="`/item/${item.id}`">{{item.title}}</router-link>
-        <small> {{item.time_ago}}, {{item.user}}</small>
-    </p>
+  <div>
+    <ListItem></ListItem>    
   </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import ListItem from "../components/ListItem.vue"
 
 export default {
-    computed:{
-        ...mapGetters({
-            fetchedAsk: 'fetchedAsk'
-        })
-    },
-    created(){
-        this.$store.dispatch('FETCH_ASK')
-    }
+  components:{
+    ListItem
+  }
 }
 </script>
 

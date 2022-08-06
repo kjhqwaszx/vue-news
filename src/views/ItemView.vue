@@ -21,7 +21,7 @@
     </section>
     <section>
       <!-- 질문 댓글 -->
-      <div :html="fetchedItemInfo.comment">
+      <div v-html="fetchedItemInfo.content">
       </div>
     </section>
   </div>
@@ -38,7 +38,7 @@ export default {
   created(){
     const askId = this.$route.params.id
     this.$store.dispatch('FETCH_ITEM', askId)
-    console.log('####', JSON.stringify(this.$store.state.item))
+    console.log('####', JSON.stringify(this.$store.state.item.content))
   }
 }
 </script>

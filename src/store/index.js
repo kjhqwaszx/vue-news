@@ -19,6 +19,9 @@ const store = createStore({
         fetchedNews(state){
             return state.news
         },
+        fetchedJobs(state){
+            return state.jobs
+        },
         fetchedUserInfo(state){
             return state.user
         },
