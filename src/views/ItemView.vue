@@ -1,21 +1,19 @@
 <template>
   <div>
     <section>
-      <!-- 질문 상세 정보 -->
-      <div class="user-container">
-        <div>
-           <i class="fas fa-user-circle"></i>
-        </div>
-        <div class="user-description">
+      <UserProfile>
+        <template v-slot:username>
           <router-link :to="`/user/${fetchedItemInfo.user}`">
-            {{fetchedItemInfo.user}}
-          </router-link>
-          <div class="time">
-            {{fetchedItemInfo.time_ago}}
-          </div>
-        </div>
-      </div>
-      <h2>
+          {{fetchedItemInfo.user}}
+        </router-link>
+        </template>
+        <template v-slot:time>
+          {{'Posted ' + fetchedItemInfo.time_ago}}
+        </template>
+      </UserProfile>
+    </section>
+    <section>
+      <h2>    
         {{fetchedItemInfo.title}}
       </h2>
     </section>
@@ -28,17 +26,19 @@
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue'
 import {mapGetters} from 'vuex'
 
 export default {
-
+  components:{
+    UserProfile
+  },
   computed:{
     ...mapGetters(['fetchedItemInfo'])
   },
   created(){
     const askId = this.$route.params.id
     this.$store.dispatch('FETCH_ITEM', askId)
-    console.log('####', JSON.stringify(this.$store.state.item.content))
   }
 }
 </script>

@@ -1,25 +1,36 @@
 <template>
   <div>
-    <p>name: {{this.fetchedUserInfo.id}}</p>
-    <p>karma: {{this.fetchedUserInfo.karma}}</p>
-    <p>created: {{this.fetchedUserInfo.created}}</p>
-    <p>about: {{this.fetchedUserInfo.about}}</p>
-
-    
+    <UserProfile :info="fetchedUserInfo">
+      <template v-slot:username>
+        <div >{{fetchedUserInfo.id}} </div>
+      </template>
+      <template v-slot:time>
+        <span > {{'Joined ' + fetchedUserInfo.created}},  </span>
+      </template>
+      <template v-slot:karma>
+        <span>{{fetchedUserInfo.karma}}</span>
+      </template>
+    </UserProfile>   
   </div>
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue'
 import {mapGetters} from 'vuex'
+import ToolBar from '@/components/ToolBar.vue'
 
 export default {
+  /* eslint-disable */
+  components:{
+    UserProfile,
+    ToolBar
+  },
   computed:{
     ...mapGetters(['fetchedUserInfo'])
   },
   created(){
     const userName = this.$route.params.id
     this.$store.dispatch('FETCH_USER', userName)
-    console.log('####', JSON.stringify(this.$store.state.user))
   }
 }
 </script>
