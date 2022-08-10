@@ -1,9 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
-import NewsView from '../views/NewsView.vue'
-import JobsView from '../views/JobsView.vue'
-import AskView from '../views/AskView.vue'
 import UserView from '../views/UserView.vue'
 import ItemView from '../views/ItemView.vue'
+import createListView from '../views/CreateListView.js'
 
 const routes = [
     {
@@ -14,18 +12,23 @@ const routes = [
         // path: url 주소
         path: '/news',
         name: 'news',
+        
         // url에 표시 될 컴포넌트
-        component: NewsView
+        // component: NewsView,
+        component: createListView('NewsView')
+
     },
     {
         path: '/ask',
         name: 'ask',
-        component: AskView
+        // component: AskView,
+        component: createListView('AskView')
     },
     {
         path: '/jobs',
         name: 'jobs',
-        component: JobsView
+        // component: JobsView,
+        component: createListView('JobsView')
     },{
         path:'/item/:id',
         component:ItemView

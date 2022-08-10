@@ -1,7 +1,9 @@
-import {fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo, fetchItemInfo } from '../api/index.js'
+import {fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo, fetchItemInfo, fetchList } from '../api/index.js'
 export default{
     // API를 통해 받아온 데이터를 mutation을 통해 update해준다
     // 이때 context.commit을 통해 Mutation에 접근할 수 있다.
+
+    /*HOC로 사용하지 않음 
     FETCH_NEWS(context){
         fetchNewsList().then(response =>{
             context.commit('SET_NEWS', response.data)
@@ -23,6 +25,7 @@ export default{
         .catch(error => console.log(error))
         context.commit('SET_LOADING', false)
     },
+    */
     FETCH_USER(context,userName){
         fetchUserInfo(userName).then(response=>{
             context.commit('SET_USER',response.data)
@@ -35,6 +38,14 @@ export default{
             context.commit('SET_ITEM',response.data)
         })
         .catch(error => console.log(error))
+        context.commit('SET_LOADING', false)
+    },
+    FETCH_LIST(context, pageName){
+        fetchList(pageName).then(response=>{
+            context.commit('SET_LIST',response.data)
+        })
+        .catch(error => console.log(error))
+
         context.commit('SET_LOADING', false)
     }
 

@@ -42,16 +42,17 @@
 export default {
 	computed:{
 		listItems(){
-			const pageName = this.$route.name
+			return this.$store.state.list
+			// const pageName = this.$route.name
 
-			if(pageName === 'news'){
-				return this.$store.state.news
-			}else if(pageName === 'ask'){
-				return this.$store.state.ask
-			}else if(pageName === 'jobs'){
-				return this.$store.state.jobs
-			}
-			return []
+			// if(pageName === 'news'){
+			// 	return this.$store.state.news
+			// }else if(pageName === 'ask'){
+			// 	return this.$store.state.ask
+			// }else if(pageName === 'jobs'){
+			// 	return this.$store.state.jobs
+			// }
+			// return []
 		}
   },
 	

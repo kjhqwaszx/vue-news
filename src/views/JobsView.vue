@@ -1,4 +1,5 @@
 <template>
+<!-- HoC로 사용 안하는 컴포넌트(CreateListView.js, ListView.vue) -->
   <div>
     <ListItem></ListItem>
   </div>

@@ -141,3 +141,11 @@ import{ mapState, mapGetters, mapMutations } from 'vuex'
     2. export default obj = {}
         => import obj from '~'
  */
+
+/*
+    [HOC] _ High Order Componet
+    중복된 기능의 컴포넌트가 있을 경우 한단계 높은 컴포넌트를 만들어 컴포넌트를 랜더링 해준다.
+    router폴더에서 라우터에 따라 하나의 컴포넌트에서 데이터 변경
+
+    CreateListView.js에서 HOC랜더링
+*/
