@@ -40,20 +40,6 @@
 <script>
 
 export default {
-	created(){
-		const pageName = this.$route.name
-		let actionName = ''
-		
-		if(pageName === 'news'){
-			actionName = 'FETCH_NEWS'
-		}else if(pageName === 'ask'){
-			actionName = 'FETCH_ASK'
-		}else if(pageName === 'jobs'){
-			actionName = 'FETCH_JOBS'
-		}
-
-		this.$store.dispatch(actionName)
-	},
 	computed:{
 		listItems(){
 			const pageName = this.$route.name

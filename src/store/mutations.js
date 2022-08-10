@@ -14,6 +14,14 @@ export default {
     },
     SET_ITEM(state, item){
         state.item = item
+    },
+    SET_LOADING(state, isLoading){
+        if(isLoading){
+            //로딩중
+            state.loadingStatus = true
+        }else{
+            state.loadingStatus = false
+        }
     }
  
 }

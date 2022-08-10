@@ -127,9 +127,17 @@ import{ mapState, mapGetters, mapMutations } from 'vuex'
 }
 
 */
+
 /**
  [slot 태그]
  - 상위 컴포넌트에서 하위 컴포넌트 template를 제어
  - props 데이터를 넘기지 않아도 상위컴포넌트 data로 처리 가능
- 
+ */
+/**
+ [export / import] 
+
+    1. export const obj = {}
+        => import {obj} from '~'
+    2. export default obj = {}
+        => import obj from '~'
  */

@@ -5,37 +5,37 @@ export default{
     FETCH_NEWS(context){
         fetchNewsList().then(response =>{
             context.commit('SET_NEWS', response.data)
-            console.log('newsStore', response.data)
             })
         .catch(error => console.log(error))
+        context.commit('SET_LOADING', false)
     },
     FETCH_JOBS(context){
         fetchJobsList().then(response =>{
             context.commit('SET_JOBS',response.data)
-            console.log('jobsStore', response.data)
         })
         .catch(error => console.log(error))
+        context.commit('SET_LOADING', false)
     },
     FETCH_ASK(context){
         fetchAskList().then(response=>{
             context.commit('SET_AKS',response.data)
-            console.log('askStore', response.data)
         })
         .catch(error => console.log(error))
+        context.commit('SET_LOADING', false)
     },
     FETCH_USER(context,userName){
         fetchUserInfo(userName).then(response=>{
             context.commit('SET_USER',response.data)
-            console.log('userStore', response.data)
         })
         .catch(error => console.log(error))
+        context.commit('SET_LOADING', false)
     },
     FETCH_ITEM(context,askId){
         fetchItemInfo(askId).then(response=>{
             context.commit('SET_ITEM',response.data)
-            console.log('itemStore', response.data)
         })
         .catch(error => console.log(error))
+        context.commit('SET_LOADING', false)
     }
 
     

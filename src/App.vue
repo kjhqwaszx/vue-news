@@ -7,6 +7,7 @@
         <component :is="Component" />
       </transition>
     </router-view>
+    <SpinnerTool :loading="getLoadingStatus"></SpinnerTool>
 
     <!-- <transition name="routing-fade" mode="out-in">
       <router-view ></router-view>
@@ -17,16 +18,26 @@
 
 <script>
 import ToolBar from './components/ToolBar.vue'
+import SpinnerTool from './components/SpinnerTool.vue'
+import {mapGetters} from 'vuex'
 export default {
 
   components:{
-    ToolBar
+    ToolBar,
+    SpinnerTool
   },
   methods:{
-    fetchData(){
-      console.log('hellod');
+    startSpinner(){
+      this.loadingStatus = true
+    },
+    endSpinner(){
+      this.loadingStatus = false
     }
-  }  
+  },
+  computed:{
+    ...mapGetters(['getLoadingStatus'])
+  }
+  
 }
 </script>
 
