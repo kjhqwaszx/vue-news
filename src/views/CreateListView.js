@@ -7,7 +7,7 @@ export default function createListView(pageName){
     //재사용 할 컴포넌트(인스턴스) 옵션들이 들어갈 자리
     name: pageName, // 만들어질 컴포넌트 이름(NewView, JobsView, AskView)
     created(){
-      
+
       this.$store.commit('SET_LOADING', true)
       setTimeout(()=>{
         this.$store.dispatch('FETCH_LIST',this.$route.name)

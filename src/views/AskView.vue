@@ -1,5 +1,8 @@
 <template>
-<!-- HoC로 사용 안하는 컴포넌트 (News, Jobs, Ask는 기능이 비슷한 컴포넌트이기 때문에 routs에서 ListView 로 대체해준다. ) -->
+<!-- HOC를 사용할 경우 사용하지 않는 컴포넌트
+    Mixin을 사용할 경우에는 사용
+        (CreateListView.js, ListView.vue) 
+-->
   <div>
     <ListItem></ListItem>    
   </div>
@@ -7,15 +10,21 @@
 
 <script>
 import ListItem from "../components/ListItem.vue"
+import ListMixin from '../mixins/ListMixin.js'
 
 export default {
   components:{
     ListItem
   },
-  created(){
-    this.$store.commit('SET_LOADING', true)
-    this.$store.dispatch('FETCH_ASK')
-  }
+  mixins: [ListMixin],
+
+ /**
+ * mixin을 사용해서 news, jobs, ask에서 중복으로 사용하는 created 문 정리
+ */
+  // created(){
+  //   this.$store.commit('SET_LOADING', true)
+  //   this.$store.dispatch('FETCH_ASK')
+  // }
 }
 </script>
 
