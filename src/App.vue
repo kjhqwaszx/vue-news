@@ -1,17 +1,18 @@
 <template>
   <div id="ap">
     <tool-bar></tool-bar>
+    <!-- <transition name="routing-fade" mode="out-in"> -->
+      <router-view ></router-view>
+    <!-- </transition> -->
     <!-- vue3 Transition 적용 -->
-    <router-view v-slot="{ Component }">
-      <transition name="routing-fade" mode="out-in">
+    <!-- <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
         <component :is="Component" />
       </transition>
-    </router-view>
+    </router-view> -->
     <SpinnerTool :loading="getLoadingStatus"></SpinnerTool>
 
-    <!-- <transition name="routing-fade" mode="out-in">
-      <router-view ></router-view>
-    </transition> -->
+    
 
   </div>
 </template>
@@ -60,6 +61,7 @@ a:hover{
 a.router-link-exact-active{
   text-decoration: underline;
 }
+
 /* Router Transition */
 .routing-fade-enter-active, .routing-fade-leave-active {
   transition: opacity .3s ease;
