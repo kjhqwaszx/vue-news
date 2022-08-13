@@ -18,6 +18,8 @@
  * store.js
  */
 
+import axios from 'axios';
+import { resolve } from 'core-js/fn/promise';
 import todoApp from './modules/todoApp'
 export const store = new Vuex.Store({
     modules:{
@@ -159,3 +161,50 @@ import{ mapState, mapGetters, mapMutations } from 'vuex'
  * 2. 라우터 네비게이션 가드
  *  - 특정 url로 접근하기 전에 동작을 정의하는 속성
  */
+
+/**
+ * [ 비동기 처리 ] _ async & await
+ *
+ **/ 
+
+// ex1 ) 
+ async function fetchData(){
+    var list = await getUserList(); // Promise 객체 앞에 await을 붙일 수 있다
+    console.log(list) // user1, user2, user3
+ }
+
+function getUserList(){
+    return new Promise(function(resolve, reject){
+        var userList = ['user1', 'user2', 'user3']
+        resolve(userList)
+    })
+}
+
+//ex2)
+loginUser(){
+    axios.get('https://jsonplaceholder.typicode.com/user/1')
+        .then(response =>{
+            if(response.data.id === 1){
+                console.log('사용자가 인증되었습니다.')
+                axios.get('https://jsonplaceholder.typicode.com/todos')
+                    .then(response => {
+                        this.items = response.data
+                    })
+            }
+        })
+        .catch(error => console.log(error))
+}
+// -> async & await 변경
+async loginUser(){
+    try{
+        var response = await axios.get('https://jsonplaceholder.typicode.com/user/1')
+        if(response.id === 1){
+            console.log('사용자가 인증되었습니다.')
+            var list = await axios.get('https://jsonplaceholder.typicode.com/todos')
+            this.items = list.data
+        }
+    }catch(error){
+        handleException(error) // util로 만들어 공통으로 처리
+    }
+    
+}
