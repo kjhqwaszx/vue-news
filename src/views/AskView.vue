@@ -16,7 +16,10 @@ export default {
   components:{
     ListItem
   },
-  mixins: [ListMixin],
+  mounted(){
+    this.$store.commit('SET_LOADING', false)
+  }
+  // mixins: [ListMixin],
 
  /**
  * mixin을 사용해서 news, jobs, ask에서 중복으로 사용하는 created 문 정리
