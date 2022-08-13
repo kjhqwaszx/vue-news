@@ -27,26 +27,40 @@ export default{
     },
     */
     FETCH_USER(context,userName){
-        fetchUserInfo(userName).then(response=>{
+        return fetchUserInfo(userName).then(response=>{
             context.commit('SET_USER',response.data)
+            context.commit('SET_LOADING', false)
         })
-        .catch(error => console.log(error))
-        context.commit('SET_LOADING', false)
+        .catch(error => {
+            console.log(error)
+            context.commit('SET_LOADING', false)
+        })
+        
     },
     FETCH_ITEM(context,askId){
-        fetchItemInfo(askId).then(response=>{
+        return fetchItemInfo(askId).then(response=>{
             context.commit('SET_ITEM',response.data)
+            context.commit('SET_LOADING', false)
         })
-        .catch(error => console.log(error))
-        context.commit('SET_LOADING', false)
+        .catch(error => {
+            console.log(error)
+            context.commit('SET_LOADING', false)
+        })
+        
     },
     FETCH_LIST(context, pageName){
-        fetchList(pageName).then(response=>{
+        // return을 해주어야 비동기 순서가 보장된다. ( action은 원래 비동기 메서드 역할)
+        return fetchList(pageName).then(response=>{
             context.commit('SET_LIST',response.data)
+            context.commit('SET_LOADING', false)
+            return response
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            context.commit('SET_LOADING', false)
+        })
 
-        context.commit('SET_LOADING', false)
+        
     }
 
     
