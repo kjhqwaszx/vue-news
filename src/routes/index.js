@@ -6,6 +6,7 @@ import NewsView  from '../views/NewsView.vue'
 import JobsView from '../views/JobsView.vue'
 import AskView from '../views/AskView.vue'
 import createListView from '../views/CreateListView.js'
+import store from '../store/index.js'
 
 const routes = [
     {
@@ -25,6 +26,16 @@ const routes = [
          */
         component: NewsView,
         // component: createListView('NewsView')
+        beforeEnter: (to, from, next)=>{
+            store.commit('SET_LOADING', true)
+            store.dispatch('FETCH_LIST',to.name)
+            .then(()=>{
+                console.log('DataLoading Success');
+                next();
+            })
+            .catch((error)=>console.log(error))
+            
+        }
 
     },
     {
@@ -32,12 +43,30 @@ const routes = [
         name: 'ask',
         component: AskView,
         // component: createListView('AskView')
+        beforeEnter: (to, from, next)=>{
+            store.commit('SET_LOADING', true)
+            store.dispatch('FETCH_LIST',to.name)
+            .then(()=>{
+                console.log('DataLoading Success');
+                next();
+            })
+            .catch((error)=>console.log(error))
+        }
     },
     {
         path: '/jobs',
         name: 'jobs',
         component: JobsView,
         // component: createListView('JobsView')
+        beforeEnter: (to, from, next)=>{
+            store.commit('SET_LOADING', true)
+            store.dispatch('FETCH_LIST',to.name)
+            .then(()=>{
+                console.log('DataLoading Success');
+                next();
+            })
+            .catch((error)=>console.log(error))
+        }
     },{
         path:'/item/:id',
         component:ItemView
