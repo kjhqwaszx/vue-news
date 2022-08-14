@@ -22,7 +22,9 @@ import ToolBar from './components/ToolBar.vue'
 import SpinnerTool from './components/SpinnerTool.vue'
 import {mapGetters} from 'vuex'
 export default {
-
+  created(){
+    console.log(process.env.VUE_APP_TITLE);
+  },
   components:{
     ToolBar,
     SpinnerTool
